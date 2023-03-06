@@ -1,10 +1,16 @@
 package com.example.mvp;
 
-public class PresenterMain {
-    MainActivity mainActivity = new MainActivity();
+public class PresenterMain implements MainRole.presenter {
+private MainRole.view view1;
+    @Override
+    public void onAttach(MainActivity view) {
+        this.view1 = (MainRole.view) view;
 
-    public void onAttach(MainActivity mainActivity){
-        this.mainActivity = mainActivity;
+this.view1.showUsers(ModelLayer.users());
+    }
 
+    @Override
+    public void Detach() {
+this.view1 = null;
     }
 }
